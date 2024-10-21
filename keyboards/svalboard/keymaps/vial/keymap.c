@@ -31,10 +31,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define HSV_SLATEGRAY   148,  56, 144
 
 LAYER_COLOR(layer0_colors, HSV_GOLDENROD); // NORMAL
-LAYER_COLOR(layer1_colors, HSV_LAWNGREEN); // FUNC
+LAYER_COLOR(layer1_colors, HSV_LAWNGREEN); // STENO
 LAYER_COLOR(layer2_colors, HSV_DEEPSKYBLUE); // NAS
-LAYER_COLOR(layer3_colors, HSV_AZURE); // FKEYS
-LAYER_COLOR(layer4_colors, HSV_DARKVIOLET); // use for NORMAL hold?
+LAYER_COLOR(layer3_colors, HSV_SLATEGRAY); // FUNC
+LAYER_COLOR(layer4_colors, HSV_DARKVIOLET); // GAME
 LAYER_COLOR(layer5_colors, HSV_PURPLE); // use for FUNC hold?
 LAYER_COLOR(layer6_colors, HSV_RED); // use for NAS hold
 LAYER_COLOR(layer7_colors, HSV_RED);
@@ -45,7 +45,7 @@ LAYER_COLOR(layer11_colors, HSV_SPRINGGREEN);
 LAYER_COLOR(layer12_colors, HSV_TEAL);
 LAYER_COLOR(layer13_colors, HSV_TURQUOISE);
 LAYER_COLOR(layer14_colors, HSV_YELLOW);
-LAYER_COLOR(layer15_colors, HSV_MAGENTA); // MBO
+LAYER_COLOR(layer15_colors, HSV_RED); // MBO
 #undef LAYER_COLOR
 
 const rgblight_segment_t*  const __attribute((weak))sval_rgb_layers[] = RGBLIGHT_LAYERS_LIST(
