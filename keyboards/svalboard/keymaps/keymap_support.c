@@ -116,6 +116,9 @@ static int snipe_y = 0;
 
 static int snipe_div = 1;
 report_mouse_t pointing_device_task_user(report_mouse_t reportMouse) {
+    if (!IS_LAYER_ON(MH_AUTO_BUTTONS_LAYER))
+        return (report_mouse_t) { };
+
     if (reportMouse.x == 0 && reportMouse.y == 0)
         return reportMouse;
 
@@ -382,8 +385,14 @@ void matrix_scan_kb(void) {
     matrix_scan_user();
 }
 
+static bool mh_auto_buttons_enabled = true;
+
+void set_mh_auto_buttons_enable(bool on) {
+    mh_auto_buttons_enabled = on;
+}
+
 void mouse_mode(bool on) {
-    if (on) {
+    if (mh_auto_buttons_enabled && on) {
         layer_on(MH_AUTO_BUTTONS_LAYER);
         mh_auto_buttons_timer = timer_read();
         mouse_mode_enabled = true;

@@ -83,6 +83,7 @@ layer_state_t default_layer_state_set_user(layer_state_t state) {
 
 layer_state_t layer_state_set_user(layer_state_t state) {
   socd_cleaner_enabled = IS_LAYER_ON_STATE(state, GAME);
+  set_mh_auto_buttons_enable(IS_LAYER_OFF_STATE(state, GAME));
   for (int i = 0; i < RGBLIGHT_LAYERS; ++i) {
     rgblight_set_layer_state(i, layer_state_cmp(state, i));
   }
