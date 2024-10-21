@@ -25,13 +25,18 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define LAYER_COLOR(name, color) rgblight_segment_t const (name)[] = RGBLIGHT_LAYER_SEGMENTS({0, 2, color})
 
-LAYER_COLOR(layer0_colors, HSV_GREEN); // NORMAL
-LAYER_COLOR(layer1_colors, HSV_ORANGE); // FUNC
-LAYER_COLOR(layer2_colors, HSV_AZURE); // NAS
-LAYER_COLOR(layer3_colors, HSV_CORAL); // FKEYS
-LAYER_COLOR(layer4_colors, HSV_YELLOW); // use for NORMAL hold?
-LAYER_COLOR(layer5_colors, HSV_TEAL); // use for FUNC hold?
-LAYER_COLOR(layer6_colors, HSV_RED); // use for NAS hold 
+#define HSV_LAWNGREEN    64, 255, 252
+#define HSV_DEEPSKYBLUE 138, 255, 255
+#define HSV_DARKVIOLET  199, 255, 211
+#define HSV_SLATEGRAY   148,  56, 144
+
+LAYER_COLOR(layer0_colors, HSV_GOLDENROD); // NORMAL
+LAYER_COLOR(layer1_colors, HSV_LAWNGREEN); // FUNC
+LAYER_COLOR(layer2_colors, HSV_DEEPSKYBLUE); // NAS
+LAYER_COLOR(layer3_colors, HSV_AZURE); // FKEYS
+LAYER_COLOR(layer4_colors, HSV_DARKVIOLET); // use for NORMAL hold?
+LAYER_COLOR(layer5_colors, HSV_PURPLE); // use for FUNC hold?
+LAYER_COLOR(layer6_colors, HSV_RED); // use for NAS hold
 LAYER_COLOR(layer7_colors, HSV_RED);
 LAYER_COLOR(layer8_colors, HSV_PINK);
 LAYER_COLOR(layer9_colors, HSV_PURPLE);
@@ -134,12 +139,12 @@ const uint16_t PROGMEM keymaps[DYNAMIC_KEYMAP_LAYER_COUNT][MATRIX_ROWS][MATRIX_C
         /* R2 */            KC_TRNS,            RGB_VAI,            KC_TRNS,            RGB_VAD,            KC_TRNS,            -1,
         /* R3 */            KC_TRNS,            KC_TRNS,            KC_TRNS,            KC_TRNS,            KC_TRNS,            -1,
         /* R4 */            KC_TRNS,            KC_TRNS,            KC_TRNS,            KC_TRNS,            KC_TRNS,            -1,
-        
+
         /* L1 */            SV_OUTPUT_STATUS,       KC_TRNS,             KC_TRNS,         KC_TRNS,            KC_TRNS,            -1,
         /* L2 */            SV_RIGHT_SCROLL_TOGGLE, SV_RIGHT_DPI_INC,    KC_TRNS,         SV_RIGHT_DPI_DEC,   KC_TRNS,            -1,
         /* L3 */            SV_LEFT_SCROLL_TOGGLE,  SV_LEFT_DPI_INC,     KC_TRNS,         SV_LEFT_DPI_DEC,    KC_TRNS,            -1,
         /* L4 */            SV_MH_CHANGE_TIMEOUTS,  SV_TOGGLE_ACHORDION, KC_TRNS,         KC_TRNS,            KC_TRNS,            -1,
-        
+
         /*                  Down                Pad                 Up                  Nail                Knuckle             Double Down         */
         /* RT */            KC_TRNS,            KC_TRNS,            KC_TRNS,            KC_TRNS,            KC_TRNS,            KC_TRNS,
         /* LT */            KC_TRNS,            KC_TRNS,            KC_TRNS,            KC_TRNS,            KC_TRNS,            KC_TRNS
