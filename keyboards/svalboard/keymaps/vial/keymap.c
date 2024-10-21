@@ -55,31 +55,46 @@ const rgblight_segment_t*  const __attribute((weak))sval_rgb_layers[] = RGBLIGHT
     layer12_colors, layer13_colors, layer14_colors, layer15_colors
 );
 
+#include "../features/socd_cleaner.h"
+
+socd_cleaner_t socd_v = {{KC_DOT, KC_E}, SOCD_CLEANER_1_WINS};
+socd_cleaner_t socd_h = {{KC_O, KC_U}, SOCD_CLEANER_LAST};
+
+bool process_record_user(uint16_t keycode, keyrecord_t * record) {
+    if (!process_socd_cleaner(keycode, record, &socd_v)) return false;
+    if (!process_socd_cleaner(keycode, record, &socd_h)) return false;
+    return true;
+}
+
+enum layer {
+    NORMAL,
+    STENO,
+    NAS,
+    FUNC,
+    GAME,
+    BOARD_CONFIG,
+    MBO = MH_AUTO_BUTTONS_LAYER,
+};
+
 layer_state_t default_layer_state_set_user(layer_state_t state) {
   rgblight_set_layer_state(0, layer_state_cmp(state, 0));
   return state;
 }
 
 layer_state_t layer_state_set_user(layer_state_t state) {
+  socd_cleaner_enabled = IS_LAYER_ON_STATE(state, GAME);
   for (int i = 0; i < RGBLIGHT_LAYERS; ++i) {
-      rgblight_set_layer_state(i, layer_state_cmp(state, i));
+    rgblight_set_layer_state(i, layer_state_cmp(state, i));
   }
   return state;
 }
-
-enum layer {
-    NORMAL,
-    FUNC,
-    NAS,
-    BOARD_CONFIG,
-    MBO = MH_AUTO_BUTTONS_LAYER,
-};
 
 #if __has_include("keymap_all.h")
 #include "keymap_all.h"
 #else
 int sval_macro_size = 0;
 uint8_t sval_macros[] = {0};
+
 const uint16_t PROGMEM keymaps[DYNAMIC_KEYMAP_LAYER_COUNT][MATRIX_ROWS][MATRIX_COLS] = {
     [NORMAL] = LAYOUT(
         /*Center           North           East            South           West*/
@@ -164,7 +179,6 @@ const uint16_t PROGMEM keymaps[DYNAMIC_KEYMAP_LAYER_COUNT][MATRIX_ROWS][MATRIX_C
         /*RT*/ KC_TRNS,        KC_BTN1,       KC_TRNS,       KC_BTN2,       KC_BTN3,   KC_TRNS,
         /*LT*/ KC_TRNS,        KC_BTN1,       KC_TRNS,       KC_BTN2,       KC_BTN3,   KC_TRNS
         )
-
 };
 #endif
 

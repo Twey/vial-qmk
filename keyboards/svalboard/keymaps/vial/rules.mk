@@ -5,4 +5,5 @@ VIAL_INSECURE ?= yes
 STENO_ENABLE = yes
 STENO_PROTOCOL = txbolt
 
-SRC += ../features/achordion.c
+SRC += ../features/achordion.c \
+       ../features/socd_cleaner.c
