@@ -69,9 +69,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t * record) {
 enum layer {
     NORMAL,
     STENO,
+    GAME,
+    GAME_INPUT,
     NAS,
     FUNC,
-    GAME,
     BOARD_CONFIG,
     MBO = MH_AUTO_BUTTONS_LAYER,
 };
