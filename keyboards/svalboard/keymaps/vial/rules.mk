@@ -3,7 +3,7 @@ VIAL_ENABLE = yes
 VIAL_INSECURE ?= yes
 
 STENO_ENABLE = yes
-STENO_PROTOCOL = txbolt
+STENO_PROTOCOL = geminipr
 
 SRC += ../features/achordion.c \
        ../features/socd_cleaner.c
