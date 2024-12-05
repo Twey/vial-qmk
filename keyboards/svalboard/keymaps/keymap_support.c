@@ -105,8 +105,10 @@ report_mouse_t pointing_device_task_combined_user(report_mouse_t reportMouse1, r
         reportMouse2.y = 0;
     }
 
-    mouse_mode(true);
     ret_mouse = pointing_device_combine_reports(reportMouse1, reportMouse2);
+
+    if (ret_mouse.x || ret_mouse.y)
+        mouse_mode(true);
 
     return pointing_device_task_user(ret_mouse);
 }
